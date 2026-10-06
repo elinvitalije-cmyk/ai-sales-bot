@@ -1,0 +1,160 @@
+{
+  "provider": "Дом.ру",
+  "city": "Волгоград",
+  "checked_at": "2026-10-06",
+  "currency": "RUB",
+
+  "families": {
+    "giga_plus": {
+      "name": "Гига+",
+      "segment": "apartment",
+      "category": "internet_tv",
+      "tv_channels": 195,
+      "movix": true,
+      "subscriptions": 0,
+      "address_check_required": true,
+
+      "variants": {
+        "300": {
+          "speed_mbps": 300,
+          "promo_price": 575,
+          "promo_months": 3,
+          "regular_price": 1150
+        },
+        "500": {
+          "speed_mbps": 500,
+          "promo_price": 675,
+          "promo_months": 3,
+          "regular_price": 1350
+        },
+        "800": {
+          "speed_mbps": 800,
+          "promo_price": 775,
+          "promo_months": 3,
+          "regular_price": 1550
+        },
+        "1000": {
+          "speed_mbps": 1000,
+          "promo_price": 900,
+          "promo_months": 3,
+          "regular_price": 1800
+        }
+      }
+    },
+
+    "zasmotris_movix": {
+      "name": "Засмотрись + Movix",
+      "segment": "apartment",
+      "category": "internet_tv_cinema",
+      "tv_channels": 165,
+      "movix": true,
+      "address_check_required": true,
+
+      "variants": {
+        "300": {
+          "speed_mbps": 300,
+          "subscriptions": 3,
+          "promo_price": 695,
+          "promo_months": 2,
+          "regular_price_options": [1420, 1440],
+          "needs_manual_verification": true
+        },
+        "500": {
+          "speed_mbps": 500,
+          "subscriptions": 4,
+          "promo_price": 895,
+          "promo_months": 2,
+          "regular_price": 1870
+        },
+        "800": {
+          "speed_mbps": 800,
+          "subscriptions": 5,
+          "promo_price": 1045,
+          "promo_months": 2,
+          "regular_price": 2190
+        }
+      }
+    },
+
+    "gaming": {
+      "name": "Гейминг",
+      "segment": "apartment",
+      "category": "gaming",
+      "tv_channels": 195,
+      "movix": true,
+      "subscriptions": 1,
+      "gaming_service": "Леста Игры",
+      "address_check_required": true,
+
+      "variants": {
+        "300": {
+          "speed_mbps": 300,
+          "regular_price": 1300
+        },
+        "600": {
+          "speed_mbps": 600,
+          "promo_price": 750,
+          "promo_months": 2,
+          "regular_price": 1500
+        },
+        "900": {
+          "speed_mbps": 900,
+          "promo_price": 850,
+          "promo_months": 2,
+          "regular_price": 1700
+        }
+      }
+    },
+
+    "gaming_wf": {
+      "name": "Гейминг WF",
+      "segment": "apartment",
+      "category": "gaming",
+      "tv_channels": 195,
+      "movix": true,
+      "subscriptions": 1,
+      "gaming_service": "Warface",
+      "address_check_required": true,
+
+      "variants": {
+        "300": {
+          "speed_mbps": 300,
+          "regular_price": 1300
+        },
+        "600": {
+          "speed_mbps": 600,
+          "promo_price": 750,
+          "promo_months": 2,
+          "regular_price": 1500
+        },
+        "900": {
+          "speed_mbps": 900,
+          "promo_price": 850,
+          "promo_months": 2,
+          "regular_price": 1700
+        }
+      }
+    },
+
+    "giga_home": {
+      "name": "Гига дом",
+      "segment": "private_house",
+      "category": "internet_tv",
+      "tv_channels": 195,
+      "movix": true,
+      "subscriptions": 0,
+      "address_check_required": true,
+
+      "variants": {
+        "300": {
+          "speed_mbps": 300,
+          "regular_price": 1350
+        },
+        "500": {
+          "speed_mbps": 500,
+          "regular_price": 1550
+        }
+      }
+    }
+  }
+}
