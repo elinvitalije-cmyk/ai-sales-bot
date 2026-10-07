@@ -3,7 +3,6 @@
   "city": "Волгоград",
   "checked_at": "2026-10-06",
   "currency": "RUB",
-
   "families": {
     "giga_plus": {
       "name": "Гига+",
@@ -13,7 +12,6 @@
       "movix": true,
       "subscriptions": 0,
       "address_check_required": true,
-
       "variants": {
         "300": {
           "speed_mbps": 300,
@@ -41,7 +39,6 @@
         }
       }
     },
-
     "zasmotris_movix": {
       "name": "Засмотрись + Movix",
       "segment": "apartment",
@@ -49,14 +46,16 @@
       "tv_channels": 165,
       "movix": true,
       "address_check_required": true,
-
       "variants": {
         "300": {
           "speed_mbps": 300,
           "subscriptions": 3,
           "promo_price": 695,
           "promo_months": 2,
-          "regular_price_options": [1420, 1440],
+          "regular_price_options": [
+            1420,
+            1440
+          ],
           "needs_manual_verification": true
         },
         "500": {
@@ -75,7 +74,6 @@
         }
       }
     },
-
     "gaming": {
       "name": "Гейминг",
       "segment": "apartment",
@@ -85,7 +83,6 @@
       "subscriptions": 1,
       "gaming_service": "Леста Игры",
       "address_check_required": true,
-
       "variants": {
         "300": {
           "speed_mbps": 300,
@@ -105,7 +102,6 @@
         }
       }
     },
-
     "gaming_wf": {
       "name": "Гейминг WF",
       "segment": "apartment",
@@ -115,7 +111,6 @@
       "subscriptions": 1,
       "gaming_service": "Warface",
       "address_check_required": true,
-
       "variants": {
         "300": {
           "speed_mbps": 300,
@@ -135,7 +130,6 @@
         }
       }
     },
-
     "giga_home": {
       "name": "Гига дом",
       "segment": "private_house",
@@ -144,7 +138,6 @@
       "movix": true,
       "subscriptions": 0,
       "address_check_required": true,
-
       "variants": {
         "300": {
           "speed_mbps": 300,
@@ -156,5 +149,24 @@
         }
       }
     }
-  }
+  },
+  "connection_fee": 1000,
+  "promo_requires_router_purchase": true,
+  "routers": [
+    {
+      "id": "dlink_dir830m",
+      "name": "D-Link DIR-830M",
+      "price": 3190
+    },
+    {
+      "id": "domru_wave",
+      "name": "Дом.ру Wave",
+      "price": 3590
+    },
+    {
+      "id": "domru_wave_plus",
+      "name": "Дом.ру Wave Plus",
+      "price": 4590
+    }
+  ]
 }
