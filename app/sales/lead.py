@@ -1,28 +1,28 @@
 import re
 
+from app.sales.catalog import get_catalog_for_ai
+
 
 LEAD_STEPS = [
     "full_name",
     "phone",
     "address",
-    "tariff",
     "call_time",
-    "comment",
 ]
 
 
 LEAD_QUESTIONS = {
-    "full_name": "Укажите ФИО одной строкой: фамилия, имя, отчество.",
+    "full_name": (
+        "Укажите ФИО одной строкой: "
+        "фамилия, имя, отчество."
+    ),
     "phone": "Укажите номер телефона для связи.",
     "address": (
         "Укажите полный адрес подключения: "
         "улица, номер дома и номер квартиры."
     ),
-    "tariff": "Какой тариф вы выбрали или рассматриваете?",
-    "call_time": "В какое время вам удобно принять звонок менеджера?",
-    "comment": (
-        "Есть ли дополнительный комментарий для менеджера? "
-        "Если нет — напишите: нет."
+    "call_time": (
+        "В какое время вам удобно принять звонок менеджера?"
     ),
 }
 
@@ -34,22 +34,85 @@ def create_empty_lead():
         "address": None,
         "tariff": None,
         "call_time": None,
+
+        # Пока оставляем для совместимости
+        # с существующей SQLite-базой.
         "comment": None,
     }
 
 
 def is_valid_full_name(full_name):
     parts = full_name.split()
-    return bool(parts) and all(part.isalpha() for part in parts)
+
+    if len(parts) != 3:
+        return False
+
+    for part in parts:
+        if re.fullmatch(
+            r"[A-Za-zА-Яа-яЁё-]+",
+            part,
+        ) is None:
+            return False
+
+    return True
 
 
 def is_valid_phone(phone):
     phone = phone.strip()
-    if re.fullmatch(r"(?:\+7|8)[0-9 ()-]*", phone) is None:
+
+    if re.fullmatch(
+        r"(?:\+7|8)[0-9 ()-]*",
+        phone,
+    ) is None:
         return False
 
-    digits = "".join(character for character in phone if character in "0123456789")
+    digits = "".join(
+        character
+        for character in phone
+        if character.isdigit()
+    )
+
     return len(digits) == 11
+
+
+def normalize_tariff_name(text):
+    return " ".join(
+        text.lower()
+        .replace("ё", "е")
+        .split()
+    )
+
+
+def get_available_tariffs():
+    catalog = get_catalog_for_ai()
+
+    tariffs = []
+
+    for tariff in catalog:
+        tariff_name = (
+            f"{tariff['name']} "
+            f"{tariff['speed_mbps']}"
+        )
+
+        tariffs.append(tariff_name)
+
+    return tariffs
+
+
+def find_tariff(user_input):
+    normalized_input = normalize_tariff_name(
+        user_input
+    )
+
+    for tariff_name in get_available_tariffs():
+        normalized_tariff = normalize_tariff_name(
+            tariff_name
+        )
+
+        if normalized_input == normalized_tariff:
+            return tariff_name
+
+    return None
 
 
 def format_lead(lead):
@@ -59,6 +122,5 @@ def format_lead(lead):
         f"Телефон: {lead['phone']}\n"
         f"Адрес: {lead['address']}\n"
         f"Тариф: {lead['tariff']}\n"
-        f"Удобное время звонка: {lead['call_time']}\n"
-        f"Комментарий: {lead['comment']}"
+        f"Удобное время звонка: {lead['call_time']}"
     )
